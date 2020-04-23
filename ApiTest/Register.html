@@ -56,30 +56,38 @@
 
 
             $('#btnRegister').click(function () {
-                var order = {
-                    Email: $('#textEmail').val(),
-                    Password: $('#textPassword').val(),
-                    confirmPassword: $('#textConfirmPassword').val(),
-                };
+                if ($("#textEmail").val().length === 0 || $("#textPassword").val().length === 0) {
+                    $('#divError').text('your data is empty');
+                } else {
+                    var order = {
+                        Email: $('#textEmail').val(),
+                        Password: $('#textPassword').val(),
+                        confirmPassword: $('#textConfirmPassword').val(),
+                    };
 
-                $.ajax({
-                    method: 'POST',
-                    url: "api/Account/Register",
-                    data: order,
-                    success: function () {
-                        alert('succes');
-                        window.location.href = 'Login.html'; 
-                    },
-                    error: function (jqXHR) {
-                        $('#divError').text(jqXHR.responseText);
+                    $.ajax({
+                        method: 'POST',
+                        url: "api/Account/Register",
+                        data: order,
+                        success: function () {
+                            alert('succes');
+                            window.location.href = 'Login.html';
+                        },
+                        error: function (jqXHR) {
+                            $('#divError').text(jqXHR.responseText);
 
-                    }
+                        }
+                    });
+
+                }
+                    
+
+              
 
 
 
 
-                });
-
+             
             });
         });
     </script>

@@ -47,35 +47,38 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $('#btnLogin').click(function () {
-                var order = {
-                    Email: $('#textEmail').val(),
-                    Password: $('#textPassword').val(),
-                    confirmPassword: $('#textConfirmPassword').val(),
-                };
-
-                $.ajax({
-                    method: 'POST',
-                    contentType: 'application /json',
-                    url: '/token',
-                    data: {
-                        username: $('#textUsername').val(),
+                if ($("#textUsername").val().length === 0 || $("#textPassword").val().length === 0) {
+                    $('#divError').text('your data is empty');
+                } else {
+                    var order = {
+                        Username: $('#textUsername').val(),
                         Password: $('#textPassword').val(),
-                        grant_type : 'password'
-                    },
-                    success: function (response) {
-                        sessionStorage.setItem('accessToken', response.access_token);
-                        window.location.href = 'Data.html'; 
-                    },
-                    error: function (jqXHR) {
-                        $('#divError').text(jqXHR.responseText);
+                        confirmPassword: $('#textConfirmPassword').val(),
+                    };
 
-                    }
+                    $.ajax({
+                        method: 'POST',
+                        contentType: 'application /json',
+                        url: '/token',
+                        data: {
+                            username: $('#textUsername').val(),
+                            Password: $('#textPassword').val(),
+                            grant_type: 'password'
+                        },
+                        success: function (response) {
+                            sessionStorage.setItem('accessToken', response.access_token);
+                            window.location.href = 'Data.html';
+                        },
+                        error: function (jqXHR) {
+                            $('#divError').text(jqXHR.responseText);
+
+                        }
 
 
 
 
-                });
-
+                    });
+                }
             });
         });
     </script>
