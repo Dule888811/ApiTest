@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="Scripts/jquery-3.4.1.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <title></title>
+</head>
+<body style="padding-top:20px">
+    <div class="col-md-10 col-md-offset-1">
+        <div class="well">
+            <form id="formSearch">
+                <input type="text" name="searchQuery" id="searchQuery" />
+                <input type="button" id="btnSearch" class="btn btn-success" value="Search employees by their name " />
+            </form>
+            <input type="button" id="btnLogOff" class="btn btn-success pull-right" value="Log off " />
+        </div>
+        <div class="well hidden" id="divData">
+            <table class="table table-bordered" id="tblData">
+                <thead>
+                    <th>FirstName</th>
+                    <th>LastName</th>
+                    <th>Salery</th>
+                </thead>
+                <tbody id="tlbBody"></tbody>
+            </table>
+        </div>
+        <div id="divError" class="alert alert-danger colapse">
+            <a id="likClose" class="close" href="#">&times;</a>
+        </div>
+        <div id="divErrorText"></div>
+    </div>
+    <script src="Scripts/jquery-3.4.1.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            
+            
+
+          /*  if (sessionStorage.getItem('accessToken') == null) {
+                windows.location.href = "Login.html";
+            } */
+
+            $('#btnLogOff').click(function () {
+                sessionStorage.removeItem('accesToken');
+                window.location.href = "Login.html";
+            });
+            $("#btnSearch").click(function () {
+                
+               
+              
+                var query = $('#searchQuery').val();
+                $.ajax({
+                    method: 'GET',
+                    headers: {
+                        'Authorization': 'Bearer' + sessionStorage.getItem('accessToken')
+                    },
+                    url: "api/Employees/Get/" + query + "" ,
+                    dataType: "json",
+                   
+                    success: function (data) {
+                        console.log(data);
+                        $('#divData').removeClass('hidden');
+                        $.each(data, function (index,value) {
+                            var row = $('<tr><td>' + value.FirsName + '</td><td>'
+                                + value.LastName + '</td><td>' +
+                                value.Salery + '</td></tr>'
+                            )
+                            $('#tblData').append(row);
+                        }); 
+                    },
+                    error: function (jqXHR) {
+                        $('#divError').text(jqXHR.responseText);
+
+                    }
+
+
+
+
+                });
+
+            });
+        });
+    </script>
+</body>
+</html>

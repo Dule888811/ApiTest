@@ -1,0 +1,10 @@
+C:\Users\pc\source\repos\ApiTest\CommentDataAccess\bin\Debug\CommentDataAccess.dll
+C:\Users\pc\source\repos\ApiTest\CommentDataAccess\bin\Debug\CommentDataAccess.pdb
+C:\Users\pc\source\repos\ApiTest\CommentDataAccess\bin\Debug\CommentDataAccess.xml
+C:\Users\pc\source\repos\ApiTest\CommentDataAccess\obj\Debug\CommentDataAccess.vbprojAssemblyReference.cache
+C:\Users\pc\source\repos\ApiTest\CommentDataAccess\obj\Debug\CommentDataAccess.Resources.resources
+C:\Users\pc\source\repos\ApiTest\CommentDataAccess\obj\Debug\CommentDataAccess.vbproj.GenerateResource.cache
+C:\Users\pc\source\repos\ApiTest\CommentDataAccess\obj\Debug\CommentDataAccess.vbproj.CoreCompileInputs.cache
+C:\Users\pc\source\repos\ApiTest\CommentDataAccess\obj\Debug\CommentDataAccess.dll
+C:\Users\pc\source\repos\ApiTest\CommentDataAccess\obj\Debug\CommentDataAccess.xml
+C:\Users\pc\source\repos\ApiTest\CommentDataAccess\obj\Debug\CommentDataAccess.pdb
